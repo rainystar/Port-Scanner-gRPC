@@ -1,4 +1,4 @@
-This is the repository for project in CSE508 Network Security
+http://securitee.org/teaching/cse508/projects/project1.html
 
 
 INSTRUCTIONS
@@ -13,14 +13,13 @@ INSTRUCTIONS
 
 
 [Dependency]
- - Web: Django 1.7.5, Bootstrap 3.3.4, jQuery 1.11.1, Google Chart (calls Google API online)
+ - Web: Django 1.7.5, Bootstrap 3.3.4, jQuery 1.11.1, Google Chart
  - Database: MySQL 5.6
  - Communication: Protocol Buffer 3.0.0-alpha-1, gRPC
  - Network packet manipulation: Scapy 2.3.1
 
 
 [Preparation]
-If coming across any problems, please contact Fangyu Deng(fangyu.deng@gmail.com), Dandan Zheng(dandan.zheng@stonybrook.edu)
 
 Ubuntu:
 1. python 2.7
@@ -82,10 +81,6 @@ Ubuntu:
 
 [Configuration]
     Configuration file: config/configuration.ini
-    Controller's ip and port is set as 127.0.0.1:10000
-    Scanner's port to send SYN/FIN packet is set as 10001
-    All the time parameters are set according to out local test environment (dual-booted linux, not on virtual machine).
-    If running in other environment, time parameters probably need to be adjusted accordingly.
 
 
 [Running]
@@ -97,14 +92,10 @@ Ubuntu:
         eg.     ./run_scanner.sh 50001
                 ./run_scanner.sh 50002
                         ...
-        Please avoid using port 10000 and 10001, because we run controller and scanners on the same machine with different ports to test for simplicity
-        Since calling some Scapy functions needs root's previledge, "run_scanner.sh" involves "sudo" command. Please enter password when running it.
 
 3. Run target server for scanning test
     $ python target_server.py <number of ports> <port1> <port2> <port3> ...
         eg.     python target_server.py 3 20000 20001 20002
-        Please run the target server on the different machine with scanners, because if all of them run locally, loopback address will be used which affects
-        sending syn and fin packets
 
 4. Run web server
     $ ./run_web.sh
