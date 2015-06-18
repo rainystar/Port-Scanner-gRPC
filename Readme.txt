@@ -13,7 +13,7 @@ INSTRUCTIONS
 
 
 [Dependency]
- - Web: Django 1.7.5, Bootstrap 3.3.4, jQuery 1.11.1, Google Chart (calls Google API online)
+ - Web: Django 1.7.5, Bootstrap 3.3.4, jQuery 1.11.1, Google Chart
  - Database: MySQL 5.6
  - Communication: Protocol Buffer 3.0.0-alpha-1, gRPC
  - Network packet manipulation: Scapy 2.3.1
