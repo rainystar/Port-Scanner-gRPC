@@ -1,0 +1,29 @@
+[database]
+db_host = localhost   
+db_name = portscanner 
+db_user = securityhacker   
+db_pwd = 123456
+
+[controller]
+cont_ip = 127.0.0.1
+cont_port = 10000
+
+[scanning]
+send_port = 10001
+
+[time]
+rpc_timeout = 1
+heartbeat_interval = 1
+controller_sleep_interval = 1
+check_alive_interval = 6.5
+allow_heartbeat_interval = 6
+job_queue_timeout = 1
+report_queue_timeout = 1
+retry_interval = 3
+job_thread_num = 10
+est_exe_job_unit_interval = 2
+check_running_job_interval = 60
+scan_conn_timeout = 2
+scan_syn_timeout = 2
+scan_fin_timeout = 2
+

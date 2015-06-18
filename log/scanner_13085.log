@@ -1,0 +1,7 @@
+Mon, 04 May 2015 16:48:52 scanner.py[line:319] INFO Scanner starts
+Mon, 04 May 2015 16:48:52 scanner.py[line:274] INFO Register success
+Mon, 04 May 2015 16:49:45 scanner.py[line:82] INFO Start job 42
+Mon, 04 May 2015 16:49:46 scanner.py[line:100] INFO Finish job 42
+Mon, 04 May 2015 16:49:46 scanner.py[line:152] INFO Send report for job 42
+Mon, 04 May 2015 16:50:05 scanner.py[line:342] INFO Stopping scanner gRPC service
+Mon, 04 May 2015 16:50:05 scanner.py[line:344] INFO Scanner exits

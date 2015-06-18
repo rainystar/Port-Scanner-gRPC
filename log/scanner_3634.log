@@ -1,0 +1,17 @@
+Mon, 04 May 2015 18:34:07 scanner.py[line:319] INFO Scanner starts
+Mon, 04 May 2015 18:34:07 scanner.py[line:274] INFO Register success
+Mon, 04 May 2015 18:35:21 scanner.py[line:82] INFO Start job 45
+Mon, 04 May 2015 18:35:27 scanner.py[line:100] INFO Finish job 45
+Mon, 04 May 2015 18:35:27 scanner.py[line:152] INFO Send report for job 45
+Mon, 04 May 2015 18:35:57 scanner.py[line:82] INFO Start job 48
+Mon, 04 May 2015 18:35:57 scanner.py[line:100] INFO Finish job 48
+Mon, 04 May 2015 18:35:58 scanner.py[line:152] INFO Send report for job 48
+Mon, 04 May 2015 18:36:59 scanner.py[line:82] INFO Start job 51
+Mon, 04 May 2015 18:37:01 scanner.py[line:100] INFO Finish job 51
+Mon, 04 May 2015 18:37:01 scanner.py[line:152] INFO Send report for job 51
+Mon, 04 May 2015 18:38:09 scanner.py[line:82] INFO Start job 54
+Mon, 04 May 2015 18:38:45 scanner.py[line:100] INFO Finish job 54
+Mon, 04 May 2015 18:38:45 scanner.py[line:152] INFO Send report for job 54
+Mon, 04 May 2015 18:39:57 scanner.py[line:82] INFO Start job 57
+Mon, 04 May 2015 18:40:01 scanner.py[line:100] INFO Finish job 57
+Mon, 04 May 2015 18:40:01 scanner.py[line:152] INFO Send report for job 57

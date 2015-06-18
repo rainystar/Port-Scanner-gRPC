@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .myform
+        {
+            margin: 20px;
+            width:50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table thead th { 
+            background-color: #99ccff;
+        }
+    </style>
+    <script type="text/javascript">
+        save_success = '{{success}}'.replace(/&quot;/g, '"');
+        if (save_success == 'success')
+            alert("Task submitted successfully");
+        else if (save_success != 'init')
+            alert("Task submitted unsuccessfully\nError: " + save_success);
+    </script>
+</head>
+
+<body onload="type_display()">
+<div class="myform">
+    <form action="/scanner/createtask/" method="post" onsubmit="return check(this);">
+        <div class="row">
+            <label class="control-label col-xs-2">Type:</label>
+            <div class="col-xs-6">
+                {{form.type}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="ip">
+            <label class="control-label col-xs-2">Ip:</label>
+            <div class="col-xs-6">
+                {{form.ip}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="ip_start">
+            <label class="control-label col-xs-2">Start Ip:</label>
+            <div class="col-xs-6">
+                {{form.ip_begin}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="ip_end">
+            <label class="control-label col-xs-2">End Ip:</label>
+            <div class="col-xs-6">
+                {{form.ip_end}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="port_start">
+            <label class="control-label col-xs-2">Start Port:</label>
+            <div class="col-xs-6">
+                {{form.port_begin}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="port_end">
+            <label class="control-label col-xs-2">End Port:</label>
+            <div class="col-xs-6">
+                {{form.port_end}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row" style="display: none;" id="seq_ran">
+            <label class="control-label col-xs-2">Seq/Ran:</label>
+            <div class="col-xs-6">
+                {{form.seq_ran}}
+            </div>
+            <br><br>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit" class="btn btn-info col-xs-2 col-xs-offset-3">
+        </div
+    </form>
+</div>
+
+<script type="text/javascript">
+    function type_display() {
+        var type = document.getElementById("id_type").value;
+        switch(type) { 
+            case "IP_SCAN":    
+                target = document.getElementById("ip");   
+                target.style.display="block";       
+                break;  
+            case "IP_BLOCK_SCAN":    
+                target = document.getElementById("ip_start");   
+                target.style.display="block"; 
+                target = document.getElementById("ip_end");   
+                target.style.display="block"; 
+                target = document.getElementById("seq_ran");   
+                target.style.display="block";                          
+                break;
+            default:
+                target = document.getElementById("ip");   
+                target.style.display="block"; 
+                target = document.getElementById("port_start");   
+                target.style.display="block"; 
+                target = document.getElementById("port_end");   
+                target.style.display="block"; 
+                target = document.getElementById("seq_ran");   
+                target.style.display="block";
+                break;
+        }         
+    }
+    
+    function type_change() {
+        var type = document.getElementById("id_type").value;
+        var target = document.getElementById("ip");
+        target.style.display="none";
+        target = document.getElementById("ip_start");
+        target.style.display="none";
+        target = document.getElementById("ip_end");
+        target.style.display="none";
+        target = document.getElementById("port_start");
+        target.style.display="none";
+        target = document.getElementById("port_end");
+        target.style.display="none";
+        target = document.getElementById("seq_ran");
+        target.style.display="none"; 
+        switch(type) { 
+            case "IP_SCAN":    
+                target = document.getElementById("ip");   
+                target.style.display="block";       
+                break;  
+            case "IP_BLOCK_SCAN":    
+                target = document.getElementById("ip_start");   
+                target.style.display="block"; 
+                target = document.getElementById("ip_end");   
+                target.style.display="block"; 
+                target = document.getElementById("seq_ran");   
+                target.style.display="block";                          
+                break;
+            default:
+                target = document.getElementById("ip");   
+                target.style.display="block"; 
+                target = document.getElementById("port_start");   
+                target.style.display="block"; 
+                target = document.getElementById("port_end");   
+                target.style.display="block"; 
+                target = document.getElementById("seq_ran");   
+                target.style.display="block";
+                break;
+        }        
+    }
+
+    function check(x) {
+        var type = document.getElementById("id_type").value;
+        switch(type) {
+            case "IP_SCAN":
+                var ip = document.getElementById("id_ip").value;
+                if (!checkIp(ip, "ip"))
+                    return false;
+                break;
+            case "IP_BLOCK_SCAN":
+                var ip_begin = document.getElementById("id_ip_begin").value;
+                if (!checkIp(ip_begin, "start ip"))
+                    return false;  
+                var ip_end = document.getElementById("id_ip_end").value;
+                if (!checkIp(ip_end, "end ip"))
+                    return false; 
+                if (!checkIpBeginEnd(ip_begin, ip_end)) {
+                    return false;
+                }             
+                break;
+            default:
+                var ip = document.getElementById("id_ip").value;
+                if (!checkIp(ip, "ip"))
+                    return false;
+                var port_begin = document.getElementById("id_port_begin").value;
+                if (!checkPort(port_begin, "start port"))
+                    return false;
+                var port_end = document.getElementById("id_port_end").value;
+                if (!checkPort(port_end, "end port"))
+                    return false;
+                if (parseInt(port_begin, 10) > parseInt(port_end, 10)) {
+                    alert("Start port should be smaller than or equal to end port");
+                    return false;
+                }
+                break;
+        }
+        return true;
+    }
+
+    function checkIp(ip, name) {
+        ip = ip.replace(/\s+/g,"");
+        if (ip.length == 0) {
+            alert("Please fill in the " + name + " address");
+            return false;
+        }
+        if (!checkValidIPV4(ip)) {
+            alert("Invalid " + name + " address");
+            return false;
+        }
+        return true;        
+    }
+
+    function checkValidIPV4(ip) {
+        var blocks = ip.split(".");
+        if (blocks.length == 4) {
+            return blocks.every(function(block) {
+                return parseInt(block, 10) >= 0 && parseInt(block, 10) <= 255;
+            });
+        }
+        return false;
+    }
+
+    function checkIpBeginEnd(ip_begin, ip_end) {
+        var blocks_begin = ip_begin.split(".");
+        var blocks_end = ip_end.split(".");
+        if (blocks_begin[0] != blocks_end[0] || blocks_begin[1] != blocks_end[1] || blocks_begin[2] != blocks_end[2]) {
+            alert("Start ip and end ip are only allowed to be different in the last byte");
+            return false;
+        }
+        if (parseInt(blocks_begin[3], 10) > parseInt(blocks_end[3], 10)){
+            alert("Start ip should be smaller than or equal to end ip");
+            return false;
+        }
+        return true;
+    }
+
+    function checkPort(port, name) {
+        port = port.replace(/\s+/g,"");
+        if (port.length == 0) {
+            alert("Please fill in the " + name);
+            return false;
+        }
+        if (isNaN(parseInt(port, 10)) || parseInt(port, 10) <= 0 || parseInt(port, 10) > 65535) {
+            alert("Invalid " + name + " number");
+            return false;
+        }
+        return true;
+    }
+ 
+</script>
+</body>
+</html>

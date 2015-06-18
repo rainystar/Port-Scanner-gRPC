@@ -1,0 +1,31 @@
+Mon, 04 May 2015 16:35:13 scanner.py[line:319] INFO Scanner starts
+Mon, 04 May 2015 16:35:13 scanner.py[line:274] INFO Register success
+Mon, 04 May 2015 16:36:00 scanner.py[line:82] INFO Start job 17
+Mon, 04 May 2015 16:36:00 scanner.py[line:100] INFO Finish job 17
+Mon, 04 May 2015 16:36:00 scanner.py[line:152] INFO Send report for job 17
+Mon, 04 May 2015 16:36:58 scanner.py[line:82] INFO Start job 19
+Mon, 04 May 2015 16:37:04 scanner.py[line:100] INFO Finish job 19
+Mon, 04 May 2015 16:37:04 scanner.py[line:152] INFO Send report for job 19
+Mon, 04 May 2015 16:38:46 scanner.py[line:82] INFO Start job 22
+Mon, 04 May 2015 16:38:46 scanner.py[line:100] INFO Finish job 22
+Mon, 04 May 2015 16:38:46 scanner.py[line:152] INFO Send report for job 22
+Mon, 04 May 2015 16:39:42 scanner.py[line:82] INFO Start job 25
+Mon, 04 May 2015 16:39:42 scanner.py[line:100] INFO Finish job 25
+Mon, 04 May 2015 16:39:42 scanner.py[line:152] INFO Send report for job 25
+Mon, 04 May 2015 16:40:37 scanner.py[line:82] INFO Start job 28
+Mon, 04 May 2015 16:40:39 scanner.py[line:100] INFO Finish job 28
+Mon, 04 May 2015 16:40:40 scanner.py[line:152] INFO Send report for job 28
+Mon, 04 May 2015 16:44:04 scanner.py[line:82] INFO Start job 31
+Mon, 04 May 2015 16:44:06 scanner.py[line:100] INFO Finish job 31
+Mon, 04 May 2015 16:44:06 scanner.py[line:152] INFO Send report for job 31
+Mon, 04 May 2015 16:44:40 scanner.py[line:82] INFO Start job 34
+Mon, 04 May 2015 16:44:58 scanner.py[line:100] INFO Finish job 34
+Mon, 04 May 2015 16:44:58 scanner.py[line:152] INFO Send report for job 34
+Mon, 04 May 2015 16:46:59 scanner.py[line:82] INFO Start job 37
+Mon, 04 May 2015 16:52:39 scanner.py[line:100] INFO Finish job 37
+Mon, 04 May 2015 16:52:39 scanner.py[line:82] INFO Start job 39
+Mon, 04 May 2015 16:52:39 scanner.py[line:152] INFO Send report for job 37
+Mon, 04 May 2015 16:54:31 scanner.py[line:100] INFO Finish job 39
+Mon, 04 May 2015 16:54:31 scanner.py[line:152] INFO Send report for job 39
+Mon, 04 May 2015 17:20:01 scanner.py[line:342] INFO Stopping scanner gRPC service
+Mon, 04 May 2015 17:20:01 scanner.py[line:344] INFO Scanner exits

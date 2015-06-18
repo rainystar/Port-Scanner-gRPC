@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .myform
+        {
+            margin: 20px;
+            width:95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table thead th { 
+            background-color: #99ccff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="myform">
+    <form id="search_form" action="/scanner/searchtask/" method="post" onsubmit="return init_page(this);">
+        <div class="row">
+            <div class="col-xs-11">
+                <div class="col-xs-4">
+                    <label class="control-label col-xs-4">Task ID:</label>
+                    <div class="col-xs-8">
+                        {{form.task_id}}
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label col-xs-4">Type:</label>
+                    <div class="col-xs-8">
+                        {{form.type}}
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label col-xs-4">Status:</label>
+                    <div class="col-xs-8">
+                        {{form.status}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <input type="submit" value="Search" class="btn btn-info">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Task ID
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Submit Time
+                    </th>
+                    <th>
+                        Finish Time
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for task in task_list %}
+                <tr ondblclick="open_task('{{task.task_id}}', '{{task.type}}');">
+                    <td>
+                        {{task.task_id}}
+                    </td>
+                    <td>
+                        {{task.type}}
+                    </td>
+                    <td>
+                        {{task.status}}
+                    </td>
+                    <td>
+                        {{task.submit_time}}
+                    </td>
+                    <td>
+                        {{task.finish_time}}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-5">
+                <ul class="pagination">
+                    {% ifequal form.current_page.value 1 %}
+                        <li class="disabled"><a href="javascript:void(0);">&laquo;</a></li>
+                    {% else %}
+                        <li><a href="javascript:prev_page();">&laquo;</a></li>
+                    {% endifequal %}
+                    <li><a>{{form.current_page.value}}/{{form.total_page.value}}</a></li>
+                    {% ifequal form.current_page.value form.total_page.value %}
+                        <li class="disabled"><a href="javascript:void(0);">&raquo;</a></li>
+                    {% else %}
+                        <li><a href="javascript:next_page();">&raquo;</a></li>
+                    {% endifequal %}
+                </ul>
+            </div>
+        </div>
+        {{form.current_page}}{{form.total_page}}
+    </form>
+</div>
+
+<script type="text/javascript">
+    function init_page(x) {
+        document.getElementById("id_current_page").value = 1;
+        return true;
+    }
+
+    function open_task(task_id, type) {
+        var url="/scanner/opentask?task_id=" + task_id + "&type=" + type;
+        var win_width = 900;
+        var win_height = 800;
+        var mytop = (window.screen.availHeight - 30 - win_height)/2
+        var myleft = (window.screen.availWidth - 10 - win_width) / 2;
+		var style="width=" + win_width + ", height=" + win_height + ", left=" + myleft + ", top=" + mytop;		
+		var result=window.open(url,"",style);
+    }
+
+    function prev_page() {
+        document.getElementById("id_current_page").value = parseInt(document.getElementById("id_current_page").value, 10) - 1;  
+        document.getElementById("search_form").submit()
+    }
+
+    function next_page() {
+        document.getElementById("id_current_page").value = parseInt(document.getElementById("id_current_page").value, 10) + 1; 
+        document.getElementById("search_form").submit()
+    }
+</script>
+</body>
+</html>

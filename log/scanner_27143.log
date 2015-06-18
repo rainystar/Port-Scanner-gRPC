@@ -1,0 +1,29 @@
+Mon, 04 May 2015 16:35:03 scanner.py[line:319] INFO Scanner starts
+Mon, 04 May 2015 16:35:03 scanner.py[line:274] INFO Register success
+Mon, 04 May 2015 16:36:57 scanner.py[line:82] INFO Start job 18
+Mon, 04 May 2015 16:37:03 scanner.py[line:100] INFO Finish job 18
+Mon, 04 May 2015 16:37:03 scanner.py[line:152] INFO Send report for job 18
+Mon, 04 May 2015 16:38:45 scanner.py[line:82] INFO Start job 21
+Mon, 04 May 2015 16:38:45 scanner.py[line:100] INFO Finish job 21
+Mon, 04 May 2015 16:38:45 scanner.py[line:152] INFO Send report for job 21
+Mon, 04 May 2015 16:39:41 scanner.py[line:82] INFO Start job 24
+Mon, 04 May 2015 16:39:41 scanner.py[line:100] INFO Finish job 24
+Mon, 04 May 2015 16:39:41 scanner.py[line:152] INFO Send report for job 24
+Mon, 04 May 2015 16:40:36 scanner.py[line:82] INFO Start job 27
+Mon, 04 May 2015 16:40:39 scanner.py[line:100] INFO Finish job 27
+Mon, 04 May 2015 16:40:39 scanner.py[line:152] INFO Send report for job 27
+Mon, 04 May 2015 16:44:03 scanner.py[line:82] INFO Start job 30
+Mon, 04 May 2015 16:44:12 scanner.py[line:100] INFO Finish job 30
+Mon, 04 May 2015 16:44:12 scanner.py[line:152] INFO Send report for job 30
+Mon, 04 May 2015 16:44:39 scanner.py[line:82] INFO Start job 33
+Mon, 04 May 2015 16:44:49 scanner.py[line:100] INFO Finish job 33
+Mon, 04 May 2015 16:44:49 scanner.py[line:152] INFO Send report for job 33
+Mon, 04 May 2015 16:46:59 scanner.py[line:82] INFO Start job 36
+Mon, 04 May 2015 16:52:34 scanner.py[line:100] INFO Finish job 36
+Mon, 04 May 2015 16:52:34 scanner.py[line:82] INFO Start job 40
+Mon, 04 May 2015 16:52:34 scanner.py[line:152] INFO Send report for job 36
+Mon, 04 May 2015 16:54:32 scanner.py[line:100] INFO Finish job 40
+Mon, 04 May 2015 16:54:32 scanner.py[line:152] INFO Send report for job 40
+Mon, 04 May 2015 17:20:04 rear.py[line:149] ERROR RPC write not accepted! Event: (Event(kind=<Kind.WRITE_ACCEPTED: <object object at 0x7f7d51eeb0f0>>, tag=UUID('b53b2655-cac1-4f9c-95f6-17f4571d1f47'), write_accepted=False, complete_accepted=None, service_acceptance=None, bytes=None, status=None),)
+Mon, 04 May 2015 17:20:21 scanner.py[line:342] INFO Stopping scanner gRPC service
+Mon, 04 May 2015 17:20:21 scanner.py[line:344] INFO Scanner exits

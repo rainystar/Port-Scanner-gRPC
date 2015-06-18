@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .myform
+        {
+            margin: 20px;
+            width:95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .table thead th { 
+            background-color: #99ccff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="myform">
+    <div class="row">
+        {% if type == "IP_SCAN" %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Job ID
+                    </th>
+                    <th>
+                        Scanner ID
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Ip
+                    </th>
+                    <th>
+                        Units
+                    </th>
+                    <th>
+                        Finish Time
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for job in job_list %}
+                <tr>
+                    <td>
+                        {{job.id}}
+                    </td>
+                    <td>
+                        {{job.scanner_id}}
+                    </td>
+                    <td>
+                        {{job.status}}
+                    </td>
+                    <td>
+                        {{job.ip}}
+                    </td>
+                    <td>
+                        {{job.num}}
+                    </td>
+                    <td>
+                        {{job.finish_time}}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% elif type == "IP_BLOCK_SCAN" %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Job ID
+                    </th>
+                    <th>
+                        Scanner ID
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Start Ip
+                    </th>
+                    <th>
+                        End Ip
+                    </th>
+                    <th>
+                        Units
+                    </th>
+                    <th>
+                        Finish Time
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for job in job_list %}
+                <tr>
+                    <td>
+                        {{job.id}}
+                    </td>
+                    <td>
+                        {{job.scanner_id}}
+                    </td>
+                    <td>
+                        {{job.status}}
+                    </td>
+                    <td>
+                        {{job.ip}}
+                    </td>
+                    <td>
+                        {{job.ip_end}}
+                    </td>
+                    <td>
+                        {{job.num}}
+                    </td>
+                    <td>
+                        {{job.finish_time}}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>  
+        {% else %}  
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Job ID
+                    </th>
+                    <th>
+                        Scanner ID
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Ip
+                    </th>
+                    <th>
+                        Start Port
+                    </th>
+                    <th>
+                        End Port
+                    </th>
+                    <th>
+                        Units
+                    </th>
+                    <th>
+                        Finish Time
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for job in job_list %}
+                <tr>
+                    <td>
+                        {{job.id}}
+                    </td>
+                    <td>
+                        {{job.scanner_id}}
+                    </td>
+                    <td>
+                        {{job.status}}
+                    </td>
+                    <td>
+                        {{job.ip}}
+                    </td>
+                    <td>
+                        {{job.port_begin}}
+                    </td>
+                    <td>
+                        {{job.port_end}}
+                    </td>
+                    <td>
+                        {{job.num}}
+                    </td>
+                    <td>
+                        {{job.finish_time}}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>  
+        {% endif %} 
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-5">
+            <ul class="pagination">
+                {% ifequal current_page 1 %}
+                    <li class="disabled"><a href="javascript:void(0);">&laquo;</a></li>
+                {% else %}
+                    <li><a href="javascript:prev_page();">&laquo;</a></li>
+                {% endifequal %}
+                <li><a>{{current_page}}/{{total_page}}</a></li>
+                {% ifequal current_page total_page %}
+                    <li class="disabled"><a href="javascript:void(0);">&raquo;</a></li>
+                {% else %}
+                    <li><a href="javascript:next_page();">&raquo;</a></li>
+                {% endifequal %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function prev_page() {
+        var current_page = parseInt({{current_page}}, 10) - 1;
+        window.location.href = "/scanner/taskjobs?task_id={{task_id}}&type={{type}}&current_page=" + current_page;
+    }
+
+    function next_page() {
+        var current_page = parseInt({{current_page}}, 10) + 1;
+        window.location.href = "/scanner/taskjobs?task_id={{task_id}}&type={{type}}&current_page=" + current_page;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+service ControllerRPC {
+    rpc RegisterScanner (Node) returns (Result) {}
+    rpc Heartbeat (Node) returns (Result) {}
+    rpc SendReport (Report) returns (Result) {}
+}
+
+service ScannerRPC {
+    rpc ConfirmAliveScanner (Node) returns (Result) {}
+    rpc SendJobList (JobList) returns (Result) {}
+    rpc CheckRunningJob (JobList) returns (ResultList) {}
+}
+
+message Node {
+    optional int32 id = 1;
+    optional string ip = 2;
+    optional int32 port = 3;
+    optional int32 running_units = 4;
+    optional string update_time = 5;
+    optional string status = 6;
+}
+
+message Result {
+    optional bool res = 1;
+    optional int32 id = 2;
+    optional string msg = 3;
+}
+
+message ResultList {
+    repeated Result results = 1;
+}
+
+message Job {
+    optional int32 id = 1;
+    optional int32 task_id = 2;
+    optional int32 scanner_id = 3;
+    optional string type = 4;
+    optional string ip = 5;
+    optional string ip_end = 6;
+    optional int32 port_begin = 7;
+    optional int32 port_end = 8;
+    optional int32 num = 9;
+    optional string seq_ran = 10;
+    optional string finish_time = 11;
+    optional string status = 12;
+}
+
+message JobList {
+    repeated Job jobs = 1;
+}
+
+message ReportItem {
+    optional string ip = 1;
+    optional int32 port = 2;
+    optional string res = 3;
+    optional string banner = 4;
+}
+
+message Report {
+    optional int32 job_id = 1;
+    optional int32 task_id = 2;
+    optional int32 scanner_id = 3;
+    optional string type = 4;
+    repeated ReportItem reports = 5;
+}
